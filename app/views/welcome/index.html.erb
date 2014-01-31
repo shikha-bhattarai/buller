@@ -1,4 +1,9 @@
 <h2>Student Profile</h2>
+
+<% if flash[:notice] -%>
+  <p class='notice'><%=h flash[:notice] %></p>
+<% end -%>
+  
 <%= link_to 'Create Student', new_post_path %> 
 <table>
   <tr>

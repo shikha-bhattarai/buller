@@ -1,5 +1,4 @@
 <h2>Editing Student's Profile</h2>
- 
 <%= form_for :post, url: post_path(@post), method: :patch do |f| %>
   <% if @post.errors.any? %>
   <div id="error_explanation">
@@ -7,7 +6,7 @@
       this post from being saved:</h2>
     <ul>
     <% @post.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
+    <li><%= msg %></li>
     <% end %>
     </ul>
   </div>
@@ -21,7 +20,8 @@
     <%= f.label :nickname %><br>
     <%= f.text_area :nickname %>
   </p>
-<p>
+
+  <p>
     <%= f.label :email %><br>
     <%= f.text_field :email %>
   </p>
@@ -33,8 +33,6 @@
  
   <p>
     <%= f.submit %>
-    
   </p>
-
 <% end %>
  
