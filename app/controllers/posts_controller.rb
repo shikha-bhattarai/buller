@@ -39,7 +39,7 @@ def update
     @post.imageurl = "http://www.gravatar.com/avatar/#{hash}" 
 end
   if @post.save
-   flash.keep[:notice]="update"
+   flash.keep[:notice]="Your profile is updated sucessfully!"
    redirect_to @post
   else
     render 'edit'

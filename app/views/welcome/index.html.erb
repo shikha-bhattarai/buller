@@ -1,9 +1,7 @@
 <h2>Student Profile</h2>
-
 <% if flash[:notice] -%>
   <p class='notice'><%=h flash[:notice] %></p>
 <% end -%>
-  
 <%= link_to 'Create Student', new_post_path %> 
 <table>
   <tr>
@@ -12,16 +10,14 @@
     <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp;&nbsp;</th>
     <th>&nbsp;&nbsp;&nbsp;&nbsp;Image</th>  
   </tr>
- 
   <% @posts.each do |post| %>
-    <tr>
-      <td><%= post.name %></td>
-      <td><%= post.nickname %></td>
-       <td><%= post.email %></td>
-       <td><img src=<%= post.imageurl %> height="200" width="180"></td>
-       <td><%= link_to 'Edit', edit_post_path(post) %></td>
-       <td><%= link_to 'Delete', post_path(post),
-         method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  <tr>
+    <td><%= post.name %></td>
+    <td><%= post.nickname %></td>
+    <td><%= post.email %></td>
+    <td><img src=<%= post.imageurl %> height="200" width="180"></td>
+    <td><%= link_to 'Edit', edit_post_path(post) %></td>
+    <td><%= link_to 'Delete', post_path(post), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>
