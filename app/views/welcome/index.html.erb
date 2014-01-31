@@ -2,10 +2,10 @@
 <%= link_to 'Create Student', new_post_path %> 
 <table>
   <tr>
-    <th>Name</th>
-    <th>Nickname</th>
-    <th>Email</th>
-    <th>Image</th>  
+    <th>Name&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    <th>&nbsp;&nbsp;&nbsp;&nbsp;Nickname&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    <th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Email&nbsp;&nbsp;&nbsp;&nbsp;</th>
+    <th>&nbsp;&nbsp;&nbsp;&nbsp;Image</th>  
   </tr>
  
   <% @posts.each do |post| %>
@@ -15,6 +15,9 @@
        <td><%= post.email %></td>
        <td><img src=<%= post.imageurl %> height="200" width="180"></td>
        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+       <td><%= link_to 'Delete', post_path(post),
+         method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
-<% end %>
+  <% end %>
+</table>
  
