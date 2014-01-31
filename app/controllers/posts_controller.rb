@@ -4,8 +4,15 @@ end
 
 def create
   @post = Post.new(params[:post].permit(:name,:nickname,:email,:imageurl))
-  @post.save
+
   redirect_to :root  
+  if params[:imageurl].nil?
+    require 'digest/md5'
+    email_address = @post.email.downcase
+    hash = Digest::MD5.hexdigest(email_address)
+    @post.imageurl = "http://www.gravatar.com/avatar/#{hash}"    
+    @post.save
+  end
 end
   
 def show
