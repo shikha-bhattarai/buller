@@ -1,19 +1,24 @@
 class PostsController < ApplicationController
 def new  
+  @post = Post.new
 end
 
 def create
-  @post = Post.new(params[:post].permit(:name,:nickname,:email,:imageurl))
-
+  @post = Post.new(params[:post].permit(:name,:nickname,:email,:imageurl,:password,:password_confirmation))
   if params[:imageurl].nil?
     require 'digest/md5'
     email_address = @post.email.downcase
     hash = Digest::MD5.hexdigest(email_address)
     @post.imageurl = "http://www.gravatar.com/avatar/#{hash}" 
-    @post.save
+    if @post.save
+      flash.keep[:notice]="Your profile is sucessfully created!"
+      redirect_to :root
+    else
+      render 'new'
+    end
   end
-  flash.keep[:notice]="Your profile is updated sucessfully!"
-  redirect_to :root
+  @post.save
+  
 end
   
 def show
@@ -31,7 +36,7 @@ end
 
 def update
   @post = Post.find(params[:id])
-  @post.update(params[:post].permit(:name, :nickname, :email,:imageurl))
+  @post.update(params[:post].permit(:name, :nickname, :email,:imageurl,:password,:password_confirmation))
     if params[:imageurl].nil?
     require 'digest/md5'
     email_address = @post.email.downcase
@@ -54,6 +59,6 @@ end
 
 private
   def post_params
-    params.require(:post).permit(:name, :nickname, :email, :imageurl)
+    params.require(:post).permit(:name, :nickname, :email, :imageurl,:password,:password_confirmation)
   end  
 end

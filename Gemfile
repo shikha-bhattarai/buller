@@ -43,3 +43,7 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+gem 'bcrypt-ruby'  
+group :development, :test do
+  gem 'byebug'
+end

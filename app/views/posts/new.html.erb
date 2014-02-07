@@ -1,3 +1,9 @@
+<ul>
+  <% for message in @posts.errors.full_messages %>
+    <li><%= message %></li>
+  <% end %>
+</ul>
+
 <%= form_for :post, url: posts_path do |f| %>
 <h2>New Student</h2>
 <%= form_for :post do |f| %>
@@ -20,7 +26,17 @@
     <%= f.label :imageurl %><br>
     <%= f.text_area :imageurl %>
   </p>
- 
+
+  <p>
+    <%= f.label :password %><br>
+    <%= f.text_area :password %>
+  </p>
+
+  <p>
+    <%= f.label :password_confirmation %><br>
+    <%= f.text_area :password_confirmation %>
+  </p>
+
   <p>
     <%= f.submit %>
   </p>
